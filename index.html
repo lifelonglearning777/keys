@@ -593,9 +593,11 @@ body:not(.reduce-motion) .modal-back{animation:rwin .18s ease}
 .phrase-card .pc-act button:hover{color:var(--on)}
 .phrase-card .fav{color:var(--gold-2)}
 .mine{border-left:2px solid var(--gold)}
-.data-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:.5rem;margin-top:.8rem}
-.data-actions button,.data-actions label{text-align:center;font-family:"BIZ UDPGothic",sans-serif;font-size:.8rem;letter-spacing:.02em;
-  padding:.55rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,.16);color:var(--on-soft);background:transparent;cursor:pointer}
+.data-card{padding:.85rem .9rem}
+.data-card .info-card{margin-top:.7rem}
+.data-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));gap:.5rem;margin-top:0}
+.data-actions button,.data-actions label{position:relative;display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;font-family:"BIZ UDPGothic",sans-serif;font-size:.78rem;letter-spacing:0;
+  padding:.55rem .6rem;border-radius:10px;border:1px solid rgba(255,255,255,.16);color:var(--on-soft);background:transparent;cursor:pointer}
 .data-actions button:hover,.data-actions label:hover{color:var(--on);border-color:rgba(255,255,255,.3)}
 .data-actions .danger{border-color:rgba(255,77,61,.5);color:#FF7A6E}
 .empty{font-family:"Space Mono",monospace;font-size:.72rem;color:var(--on-dim)}
@@ -1851,14 +1853,14 @@ function vRecords(){
   `<p class="empty">1日のミッションを3つクリアして宝箱をあけると、ネイティブがよく使うフレーズが1つずつたまります。</p>`}
  ${dataActionsHtml()}`}
 function dataActionsHtml(){
- return`<div class="data-actions">
+ return`<div class="set-card data-card"><div class="data-actions">
   <button id="btnJson">引きつぎデータを保存</button>
   <label>引きつぎデータを読みこむ<input type="file" id="fileJson" accept=".json" class="sr-only"></label>
   <button id="btnCsv">記録一覧を書き出す(CSV)</button>
   <button id="btnPrint">学習のきろくを印刷</button>
   <button class="danger" id="btnResetAll">データを全部消す</button>
  </div>
- <div class="info-card">記録はこの端末のブラウザの中に保存されています。<b>別のパソコンやタブレットで続きから使いたいとき</b>は、今の端末で「引きつぎデータを保存」→ 新しい端末で「引きつぎデータを読みこむ」の順に使ってください。「記録一覧(CSV)」は、学習のようすをExcelなどで見たいとき(先生への提出など)に使います。データは外部には送信されません。</div>`}
+ <div class="info-card">記録はこの端末のブラウザの中に保存されています。<b>別のパソコンやタブレットで続きから使いたいとき</b>は、今の端末で「引きつぎデータを保存」→ 新しい端末で「引きつぎデータを読みこむ」の順に使ってください。「記録一覧(CSV)」は、学習のようすをExcelなどで見たいとき(先生への提出など)に使います。データは外部には送信されません。</div></div>`}
 function dl(name,text,type){const a=document.createElement("a");
  a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000)}
 function csvCell(v){v=String(v??"");return/[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
@@ -1949,7 +1951,7 @@ function vSettings(){const s=S.set;
    <input type="text" id="setNick" maxlength="12" value="${esc(s.nick)}" style="width:8rem"></div>
  </div>
  <h2 class="sec">Data</h2>
- <div class="set-card" style="padding:.8rem .9rem">${dataActionsHtml()}</div>
+ ${dataActionsHtml()}
  <h2 class="sec">Teacher</h2>
  <div class="set-card">
   ${teacherOpen?`
