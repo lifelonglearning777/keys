@@ -593,11 +593,11 @@ body:not(.reduce-motion) .modal-back{animation:rwin .18s ease}
 .phrase-card .pc-act button:hover{color:var(--on)}
 .phrase-card .fav{color:var(--gold-2)}
 .mine{border-left:2px solid var(--gold)}
-.data-card{padding:.85rem .9rem}
+.data-card{padding:.7rem .75rem}
 .data-card .info-card{margin-top:.7rem}
-.data-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));gap:.5rem;margin-top:0}
-.data-actions button,.data-actions label{position:relative;display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;font-family:"BIZ UDPGothic",sans-serif;font-size:.78rem;letter-spacing:0;
-  padding:.55rem .6rem;border-radius:10px;border:1px solid rgba(255,255,255,.16);color:var(--on-soft);background:transparent;cursor:pointer}
+.data-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:.45rem;margin-top:0}
+.data-actions button,.data-actions label{position:relative;display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;font-family:"BIZ UDPGothic",sans-serif;font-size:.74rem;letter-spacing:0;
+  padding:.5rem .45rem;border-radius:10px;border:1px solid rgba(255,255,255,.16);color:var(--on-soft);background:transparent;cursor:pointer}
 .data-actions button:hover,.data-actions label:hover{color:var(--on);border-color:rgba(255,255,255,.3)}
 .data-actions .danger{border-color:rgba(255,77,61,.5);color:#FF7A6E}
 .empty{font-family:"Space Mono",monospace;font-size:.72rem;color:var(--on-dim)}
@@ -1851,7 +1851,7 @@ function vRecords(){
    <div class="pc-act"><button data-rs="${i}" title="読み上げ">🔊</button></div></div>`).join("")+`</div>`+
    (rv.length>6?`<button class="show-more" data-more="reward">${rewardAll?"とじる ▲":`すべて表示 (${rv.length}件) ▼`}</button>`:"")})():
   `<p class="empty">1日のミッションを3つクリアして宝箱をあけると、ネイティブがよく使うフレーズが1つずつたまります。</p>`}
- ${dataActionsHtml()}`}
+ `}
 function dataActionsHtml(){
  return`<div class="set-card data-card"><div class="data-actions">
   <button id="btnJson">引きつぎデータを保存</button>
@@ -1867,8 +1867,7 @@ function csvCell(v){v=String(v??"");return/[",\n]/.test(v)?'"'+v.replace(/"/g,'"
 function bindRecords(){
  bindPhrases();
  const rvAll=S.rewards.slice().reverse(),rws=rewardAll?rvAll:rvAll.slice(0,6);
- document.querySelectorAll("[data-rs]").forEach(b=>b.onclick=()=>speak(rws[b.dataset.rs].en));
- bindDataActions()}
+ document.querySelectorAll("[data-rs]").forEach(b=>b.onclick=()=>speak(rws[b.dataset.rs].en))}
 function bindDataActions(){
  $("#btnCsv").onclick=()=>{
   const head="date,time,questionId,level,mode,result,input,correctAnswer,duration,accuracy,wpm,errorType,hintLevel,confidence,nickname";
