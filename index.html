@@ -106,7 +106,10 @@ nav button.on{color:var(--table);background:var(--on)}
 .cloud-note{font-size:.72rem;line-height:1.65;color:var(--ink-soft);margin:.55rem 0}.cloud-actions{display:flex;gap:.55rem;justify-content:flex-end;flex-wrap:wrap;margin-top:.9rem}
 .cloud-actions button{padding:.55rem .9rem;border-radius:9px;font-size:.78rem;font-weight:700}.cloud-settings-status{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}
 .cloud-settings-status .cloud-id{font-family:"Space Mono",monospace;font-size:.78rem;color:var(--gold-2);font-weight:700}.cloud-settings-status .cloud-okmark{font-size:.72rem;color:var(--gold-2);border:1px solid rgba(228,161,27,.45);border-radius:999px;padding:.15rem .5rem}
-.cloud-settings-code{font-family:"Space Mono",monospace;font-size:.7rem;color:var(--on-soft);letter-spacing:.08em}.cloud-cancel{border:1px solid var(--rule);background:#fff;color:var(--ink-soft)}
+.cloud-settings-code{font-family:"Space Mono",monospace;font-size:.7rem;color:var(--on-soft);letter-spacing:.08em}
+.cloud-inline-icon{display:inline-flex;width:16px;height:16px;vertical-align:-3px;margin:0 .2rem;color:var(--gold-2)}
+.cloud-inline-icon svg{width:100%;height:100%}
+.cloud-cancel{border:1px solid var(--rule);background:#fff;color:var(--ink-soft)}
 .cloud-ok{background:var(--gold);color:#1F1608}.cloud-ok:hover{background:#D69614}
 @media(max-width:760px){.cloud-save{padding:.36rem .52rem;gap:.3rem}.cloud-save-label{display:inline;font-size:.62rem}.cloud-form{grid-template-columns:1fr}.cloud-toast{top:4.7rem}}
 
@@ -2013,7 +2016,7 @@ function dataActionsHtml(){
   <button id="btnPrint">学習のきろくを印刷</button>
   <button class="danger" id="btnResetAll">データを全部消す</button>
  </div>
- <div class="info-card">学習内容はまずこの端末に保存されます。SAVEを使うと、クラス・番号・進み具合と復元用バックアップを先生側にも保存します。別の端末では「バックアップから復元」が使えます。従来の「引きつぎデータを保存／読みこむ」もそのまま利用できます。</div></div>`}
+ <div class="info-card"><span class="cloud-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.8h11.2L20.2 7v13.2H3.8V3.8H5z"/><path d="M7.5 3.8v6h8v-6"/><path d="M7 20.2v-6.4h10v6.4"/></svg></span><b>SAVE</b> は、今の学習記録をこの端末に保存します。学習記録の保存設定をしている場合は、先生にも最新の進み具合が送られ、端末が変わったときのバックアップも更新されます。<br><br><b>端末を変えるとき</b>は「バックアップから復元」が使えます。また、あらかじめ「引きつぎデータを保存」しておけば、新しい端末で「引きつぎデータを読みこむ」ことでも続きから使えます。</div></div>`}
 function dl(name,text,type){const a=document.createElement("a");
  a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000)}
 function csvCell(v){v=String(v??"");return/[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
