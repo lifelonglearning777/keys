@@ -2016,7 +2016,7 @@ function dataActionsHtml(){
   <button id="btnPrint">学習のきろくを印刷</button>
   <button class="danger" id="btnResetAll">データを全部消す</button>
  </div>
- <div class="info-card"><span class="cloud-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.8h11.2L20.2 7v13.2H3.8V3.8H5z"/><path d="M7.5 3.8v6h8v-6"/><path d="M7 20.2v-6.4h10v6.4"/></svg></span><b>SAVE</b> は、今の学習記録をこの端末に保存します。学習記録の保存設定をしている場合は、先生にも最新の進み具合が送られ、端末が変わったときのバックアップも更新されます。<br><br><b>端末を変えるとき</b>は「バックアップから復元」が使えます。また、あらかじめ「引きつぎデータを保存」しておけば、新しい端末で「引きつぎデータを読みこむ」ことでも続きから使えます。</div></div>`}
+ <div class="info-card"><span class="cloud-inline-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.8h11.2L20.2 7v13.2H3.8V3.8H5z"/><path d="M7.5 3.8v6h8v-6"/><path d="M7 20.2v-6.4h10v6.4"/></svg></span><b>SAVE</b>で、今の学習記録を保存します。記録は先生にも届き、別の端末でも復元できます。<br><br><b>端末を変えるとき</b>は「バックアップから復元」が使えます。また、あらかじめ「引きつぎデータを保存」しておけば、新しい端末で「引きつぎデータを読みこむ」ことでも続きから使えます。</div></div>`}
 function dl(name,text,type){const a=document.createElement("a");
  a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000)}
 function csvCell(v){v=String(v??"");return/[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
