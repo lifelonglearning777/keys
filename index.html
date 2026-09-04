@@ -1449,6 +1449,16 @@ header.compact .wordmark{font-size:1.2rem}
   stroke:currentColor!important;
 }
 
+
+/* Practice-only anti copy/paste: prompts cannot be selected for copying */
+.train-sheet .q-en,
+.train-sheet .q-ja,
+.train-sheet .fb,
+.train-sheet .order-area{
+  -webkit-user-select:none;
+  user-select:none;
+}
+
 </style>
 </head>
 <body data-colors="on">
@@ -3016,11 +3026,24 @@ function applySettings(){
  document.body.dataset.colors=S.set.colors;
  document.body.classList.toggle("reduce-motion",!S.set.motion)}
 
+
+/* ---------- 学習画面のコピペ防止 ---------- */
+function protectPracticeArea(){
+ const sheet=document.querySelector(".train-sheet");
+ if(!sheet)return;
+ ["copy","cut","paste","drop"].forEach(ev=>{
+   sheet.addEventListener(ev,e=>e.preventDefault());
+ });
+ sheet.addEventListener("beforeinput",e=>{
+   if(e.inputType==="insertFromPaste"||e.inputType==="insertFromDrop")e.preventDefault();
+ });
+}
+
 /* ---------- レンダリング ---------- */
 function render(){
  renderHeader();
  const app=$("#app");
- if(view==="session"&&session){app.innerHTML=vSession();
+ if(view==="session"&&session){app.innerHTML=vSession();protectPracticeArea();
    $("#btnQuit").onclick=()=>askConfirm("練習を中断しますか?\n(つづきから再開できます)",()=>nav("home"),"中断する");
    const q=curQ(),a=session.att;
    if(a.done)bindDone(q,a);
